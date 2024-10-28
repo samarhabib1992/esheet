@@ -46,8 +46,8 @@ class LoginController extends Controller
      * @param  \App\Http\Requests\admin\LoginRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(LoginRequest $request) 
-    {  
+    public function login(LoginRequest $request)
+    {
         $authenticated = $request->validated();
         if($authenticated) {
             $request->authenticate();
@@ -72,7 +72,7 @@ class LoginController extends Controller
     {
         return view('admin.pages.auth.forgot-password');
     }
- 
+
     public function submitForgetPasswordForm(ForgotPasswordRequest $request)
     {
 

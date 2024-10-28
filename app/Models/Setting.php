@@ -15,5 +15,5 @@ class Setting extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_name', 'mobile_number', 'phone_number', 'address', 'email', 'smtp_mail_host', 'smtp_mail_port', 'smtp_mail_username', 'smtp_mail_password', 'smtp_mail_from_address', 'smtp_mail_from_name', 'logo'];
+    protected $fillable = ['company_name', 'mobile_number', 'phone_number', 'address', 'email', 'smtp_mail_host', 'smtp_mail_port', 'smtp_mail_username', 'smtp_mail_password', 'smtp_mail_from_address', 'smtp_mail_from_name', 'logo', 'facebook', 'skype', 'twitter', 'pinterest'];
 }

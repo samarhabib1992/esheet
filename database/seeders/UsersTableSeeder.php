@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class UsersTableSeeder extends Seeder 
+class UsersTableSeeder extends Seeder
 {
     public function run()
     {
@@ -93,7 +93,7 @@ class UsersTableSeeder extends Seeder
         $superAdminRole->givePermissionTo(Permission::all());
 
         // Insert a default user record with the Super Admin role
-        User::create([
+        $user = User::create([
             'first_name' => 'Admin',
             'last_name' => 'User',
             'email' => 'admin@esheet.com',
@@ -103,5 +103,6 @@ class UsersTableSeeder extends Seeder
             'status' => '1',
             'role_id' => $superAdminRole->id,
         ]);
+        $user->assignRole(Role::where('id', $superAdminRole->id)->pluck('name')->first());
     }
 }

@@ -19,12 +19,16 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
-            $table->string('smtp_mail_host')->Nullable();
+            $table->string('smtp_mail_host')->nullable();
             $table->integer('smtp_mail_port')->nullable();
             $table->string('smtp_mail_username')->nullable();
             $table->string('smtp_mail_password')->nullable();
             $table->string('smtp_mail_from_address')->nullable();
             $table->string('smtp_mail_from_name')->nullable();
+            $table->string('facebook', 255)->nullable(); 
+            $table->string('skype', 255)->nullable(); 
+            $table->string('twitter', 255)->nullable(); 
+            $table->string('pinterest', 255)->nullable(); 
             $table->string('logo', 255)->nullable(); 
             $table->timestamps();
         });

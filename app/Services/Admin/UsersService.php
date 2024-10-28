@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use Exception;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -21,13 +22,17 @@ class UsersService extends BaseService implements UserRepositoryInterface
         $this->setRepository($userRepository);
     }
 
-    public function listing()
+    public function getAll()
     {
         $columns  = ['id', 'first_name', 'last_name', 'email', 'mobile_number', 'profile_picture', 'user_type', 'status', 'role_id', 'created_at'];
         $conditions = [
             'user_type' => 'user',
         ];
-        $relations = [];
+        $relations = [
+            'role' => function ($query) {
+                $query->select(['id', 'name']);
+            }
+        ];
         $orderBy = ['created_at' => 'DESC'];
         $perPage = 15;
         return $this->repository->findRecordsByPagination($conditions, $columns,$relations,$orderBy,$perPage);
@@ -54,7 +59,10 @@ class UsersService extends BaseService implements UserRepositoryInterface
             $path = $image->storeAs('users', $imageName, 'public'); 
             $userData['profile_picture'] = $path; // Save the path to 'image' column
         }
-       $this->repository->create($userData);
+
+       $user = $this->repository->create($userData);
+       $user->assignRole(Role::where('id', $data['role_id'])->pluck('name')->first());
+       return $user;
     }
 
     public function update(array $data = [], $id = null) 
@@ -83,7 +91,9 @@ class UsersService extends BaseService implements UserRepositoryInterface
             $userData['profile_picture'] = $path; // Save the path to 'image' column
         }
         // Perform the update using the repository
-        $this->repository->update($updateData, $id);
+        $user = $this->repository->update($updateData, $id);
+        $user->assignRole(Role::where('id', $data['role_id'])->pluck('name')->first());
+        return $user;
     }
     public function delete(array $data=[]){
         DB::beginTransaction();

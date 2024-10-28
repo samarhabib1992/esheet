@@ -7,7 +7,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 bold mt-4">Add Role</h1>
     </div>
-    @if(isset($permissions) && !empty($permissions) && $permissions->count() > 0)
+    @if(isset($permissions) && $permissions->isNotEmpty())
     <!-- Content Row -->
         <form method="POST" id="roleForm" name="roleForm" action="" enctype="multipart/form-data">
             @csrf

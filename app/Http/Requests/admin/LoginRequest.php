@@ -11,7 +11,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Str;
 
-class LoginRequest extends FormRequest 
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

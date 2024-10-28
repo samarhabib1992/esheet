@@ -30,6 +30,10 @@ class SettingRequest extends FormRequest
                 'phone_number' => 'nullable|string|max:20',
                 'address' => 'nullable|string|max:255',
                 'email' => 'nullable|email|max:255',
+                'facebook' => 'nullable|url',
+                'skype' => 'nullable|url',
+                'twitter' => 'nullable|url',
+                'pinterest' => 'nullable|url',
                 'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // File validation for logo
             ];
         }
@@ -48,6 +52,11 @@ class SettingRequest extends FormRequest
             'email.max' => 'The email address may not be greater than 255 characters.',
             'logo.mimes' => 'The logo must be a file of type: jpeg, png, jpg, gif.',
             'logo.image' => 'The logo must be an image.',
+            //facebook, skype, twitter, pinterest
+            'facebook.url' => 'Please enter a valid URL for facebook.',
+            'skype.url' => 'Please enter a valid URL for skype.',
+            'twitter.url' => 'Please enter a valid URL for twitter.',
+            'pinterest.url' => 'Please enter a valid URL for pinterest.',   
             //smtp
             'smtp_mail_host.required' => 'The SMTP host is required.',
             'smtp_mail_port.required' => 'The SMTP port is required.',

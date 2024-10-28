@@ -43,7 +43,7 @@
                                         <td> {{ $row->last_name?? '' }} </td>
                                         <td> {{ $row->email?? '' }} </td>
                                         <td> {{ $row->mobile_number?? '' }} </td>
-                                        <td> {{ $row->role_id?? '' }} </td>
+                                        <td> {{ $row->role ? $row->role->name : '' }} </td>
                                         <td> {{ $row->created_at->format('d M, Y')?? '' }} </td>
                                         <td>
                                             <a href="{{ route('admin.users.edit', $row->id) }}" class="text-gray-600" href=""><i class="fa fa-edit"></i></a>

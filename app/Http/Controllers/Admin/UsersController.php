@@ -19,7 +19,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $result = $this->userService->listing();
+        $result = $this->userService->getAll();
         return view('admin.pages.users.index',compact('result'));
     }
 

@@ -53,7 +53,7 @@ function displayErrors(formId, errors) {
         timer: 3000,
         timerProgressBar: true,
     });
-    var commonErrorClass = '.' + formId + 'Error';
+    var commonErrorClass = $("#" + formId + 'Error');
     // Clear previous error messages
     $(commonErrorClass).html('');
     $('.commonFormError').html('');
@@ -68,10 +68,18 @@ function displayErrors(formId, errors) {
                 $field.addClass('is-invalid');  // Add Bootstrap error class
                 $field.siblings('.invalid-feedback').html(errorMessage).show(); // Display error message near the field
             } else {
-                $(commonErrorClass).html(errors).show();
-                setTimeout(function() {
-                    $(commonErrorClass).fadeOut(); 
-                }, 5000);
+                 
+                if(commonErrorClass.length > 0) {
+                    $(commonErrorClass).html(errorMessage).show();
+                    setTimeout(function() {
+                        $(commonErrorClass).fadeOut(); 
+                    }, 35000);
+                } else {
+                    $('.commonFormError').html(errorMessage).show();
+                    setTimeout(function() {
+                        $('.commonFormError').fadeOut(); 
+                    }, 35000);
+                }
             }
         } 
     }

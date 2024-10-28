@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\RoleRequest;
+use App\Http\Requests\admin\RoleRequest;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller

@@ -32,6 +32,10 @@ class SettingService{
                     'phone_number' => $data['phone_number'],
                     'address' => $data['address'],
                     'email' => $data['email'],
+                    'facebook' => $data['facebook'],
+                    'skype' => $data['skype'],
+                    'twitter' => $data['twitter'],
+                    'pinterest' => $data['pinterest'],
                 ];
 
                 // Check if a record with ID 1 exists

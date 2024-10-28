@@ -31,9 +31,10 @@
                                 <a href="javascript:void(0);" class="upload-text bold" onclick="triggerFileUpload();">Upload more images <i class="fas fa-upload"></i></a>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="form-group mt-4">
+                            <div class="col-12 mt-4">
                                 <label class="small mb-1">Description</label>
-                                <textarea name="description" class="form-control" rows="3" id="description"> {{ old('description', $row->description ?? '') }}</textarea>
+                                <div id="editor" class="form-control"></div>
+                                <textarea id="editor-content" name="content" style="display: none;"> {{ old('description', $row->description ?? '') }}</textarea>
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>
@@ -86,6 +87,7 @@
 </div>
 @endsection
 @push('scripts')
+@include('admin.scripts.editor')
 <script type="text/javascript">
     $(document).on('click', '#submitBtn', function(e) {
         e.preventDefault();
@@ -107,6 +109,10 @@
         formFields.forEach(function(field) {
             formData.append(field.name, field.value);
         });
+
+        // Retrieve the markdown content
+        var markdownContent = editor.getMarkdown(); // Ensure editor instance is used here
+        formData.append('description', markdownContent);  // Append editor content as 'content'
 
         // Now you can proceed with AJAX submission
         $.ajax({
@@ -166,6 +172,10 @@
         formFields.forEach(function(field) {
             formData.append(field.name, field.value);
         });
+        
+        // Retrieve the markdown content
+        var markdownContent = editor.getMarkdown(); // Ensure editor instance is used here
+        formData.append('description', markdownContent);  // Append editor content as 'content'
 
         // Now you can proceed with AJAX submission
         $.ajax({

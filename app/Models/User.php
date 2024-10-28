@@ -2,6 +2,7 @@
 // app/Models/User.php
 namespace App\Models;
 
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,7 +20,7 @@ class User extends Authenticatable
         'profile_picture',
         'password',
         'role_id',
-        'status' 
+        'status'
     ];
 
     protected $hidden = [

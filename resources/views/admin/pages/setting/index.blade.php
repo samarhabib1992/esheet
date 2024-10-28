@@ -47,8 +47,28 @@
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="form-group col-md-6">
+                                        <label>Facebook</label>
+                                        <input class="form-control" type="text" id="facebook" name="facebook" placeholder="https://facebook.com" value="{{ old('facebook', $row->facebook ?? '')}}">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Twitter</label>
+                                        <input class="form-control" type="text" id="twitter" name="twitter" placeholder="https://twitter.com" value="{{ old('twitter', $row->twitter ?? '')}}">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Pinterest</label>
+                                        <input class="form-control" type="text" id="pinterest" name="pinterest" placeholder="https://pinterest.com" value="{{ old('pinterest', $row->pinterest ?? '')}}">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Skype</label>
+                                        <input class="form-control" type="text" id="skype" name="skype" placeholder="https://skype.com" value="{{ old('skype', $row->skype ?? '')}}">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
                                         <label>Address</label>
-                                        <input class="form-control" type="text" id="address" name="address" placeholder="" value="{{ old('address', $row->address ?? '')}}">
+                                        <textarea class="form-control" type="text" id="address" name="address" placeholder="">{{ old('address', $row->address ?? '')}}</textarea>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="form-group col-md-6">
